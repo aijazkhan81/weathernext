@@ -1,0 +1,29 @@
+{
+  "name": "weathernext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash": "^4.14.121",
+    "@types/lodash-es": "^4.17.2",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "next": "^8.0.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
+  },
+  "crcf": [
+    "scss",
+    "notest",
+    "uppercase"
+  ]
+}
