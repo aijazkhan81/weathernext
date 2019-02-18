@@ -1,31 +1,59 @@
-import React, { Component } from 'react'
+import { get, uniqBy } from 'lodash';
+import React, { Component } from 'react';
 import { getWeatherdata } from '../../utils/weatherapi';
-import { chunk } from 'lodash';
+import WeatherCard from '../WeatherCard';
+import WeatherLayout from '../WeatherLayout';
 
 export class WeatherBase extends Component {
     constructor(props) {
         super();
 
         this.state = {
-            weathersList: []
+            weatherData: {}
         };
     }
 
+    buildList = (r) => {
+        const list = r.list.map((a) => {
+            return {
+                ...a,
+                date: a.dt_txt.split(' ')[0],
+                weather: a.weather[0]
+            }
+        })
+        this.setState({
+            weatherData: {
+                city: r.city,
+                list: list
+            }
+        })
+    }
+
     componentDidMount() {
-        const test = getWeatherdata(78753)
+        getWeatherdata(78753)
             .then((r) => {
-                this.weathersList = r.data;
-                this.weathersList.list = chunk(r.data.list, 6)
-                console.log(this.weathersList);
+                this.buildList(r.data)
             })
     }
 
-    render() {
-        return (
-            <div>
 
-            </div>
-        )
+
+    render() {
+        const list = uniqBy(get(this.state, 'weatherData.list'), 'date');
+        if (list) {
+            return (
+                <React.Fragment>
+                    {/* {
+                        list.map((w) => {
+                            return <WeatherCard key={w.dt} {...w.main} icon={w.icon} />
+                        })
+                    } */}
+                    <WeatherLayout />
+                </React.Fragment>
+            )
+        } else {
+            return 'Nothing found'
+        }
     }
 }
 

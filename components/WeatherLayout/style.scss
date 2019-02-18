@@ -1,0 +1,11 @@
+.mainlayout {
+    display: flex;
+    width: 80%;
+    align-content: center;
+    &>div {
+        background: green;
+        color: white;
+        height: 80vh;
+        width: 50%;
+    }
+}
