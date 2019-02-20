@@ -1,9 +1,28 @@
 .mainlayout {
     display: flex;
     width: 80%;
-    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    box-shadow: 0px 3px 8px #808080a8;
+    border-radius: 10px;
+    .mainarea {
+        width: 30%;
+        background: #f24b90;
+        background: -moz-linear-gradient(top, #f24b90 0%, #f78167 74%);
+        background: -webkit-linear-gradient(top, #f24b90 0%, #f78167 74%);
+        background: linear-gradient(to bottom, #f24b90 0%, #f78167 74%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f24b90', endColorstr='#f78167', GradientType=0);
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .descarea {
+        width: 70%;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 20px;
+    }
     &>div {
-        background: green;
         color: white;
         height: 80vh;
         width: 50%;

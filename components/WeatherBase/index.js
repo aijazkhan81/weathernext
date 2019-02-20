@@ -18,7 +18,11 @@ export class WeatherBase extends Component {
             return {
                 ...a,
                 date: a.dt_txt.split(' ')[0],
-                weather: a.weather[0]
+                time: a.dt_txt.split(' ')[1],
+                main: {
+                    ...a.weather[0],
+                    ...a.main
+                }
             }
         })
         this.setState({
@@ -39,16 +43,11 @@ export class WeatherBase extends Component {
 
 
     render() {
-        const list = uniqBy(get(this.state, 'weatherData.list'), 'date');
+        const list = get(this.state, 'weatherData.list');
         if (list) {
             return (
                 <React.Fragment>
-                    {/* {
-                        list.map((w) => {
-                            return <WeatherCard key={w.dt} {...w.main} icon={w.icon} />
-                        })
-                    } */}
-                    <WeatherLayout />
+                    <WeatherLayout data={list} />
                 </React.Fragment>
             )
         } else {

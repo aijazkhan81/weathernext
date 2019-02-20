@@ -1,0 +1,14 @@
+.weathercard {
+    display: flex;
+    width: 100%;
+    &>div {
+        width: 20%;
+        &:nth-child(2) {
+            width: 60%;
+        }
+    }
+}
+
+.tar {
+    text-align: right;
+}
